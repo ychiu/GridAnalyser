@@ -25,7 +25,7 @@ namespace GridAnalyserLibrary
             long maxRowProduct = 0;
             long product = 0;
             // Get number of rows
-            var noOfRows = searchGrid.GetLength(0);
+            var noOfRows = searchGrid.Length;
 
             for (int i = 0; i < noOfRows; i++)
             {
@@ -38,7 +38,7 @@ namespace GridAnalyserLibrary
         {
             long maxRowProduct = 0;
             long product = 0;
-            var rowLength = searchGrid.GetLength(1);
+            var rowLength = searchGrid[0].Length;
             for (int i = 0; i < rowLength - adjacentIntegers; i++)
             {
                 product = FindRowProduct(rowIndex, i, adjacentIntegers);
@@ -62,7 +62,7 @@ namespace GridAnalyserLibrary
             long maxColumnProduct = 0;
             long product = 0;
             // Get number of columns
-            var noOfColumns = searchGrid.GetLength(1);
+            var noOfColumns = searchGrid[0].Length;
 
             for (int i = 0; i < noOfColumns; i++)
             {
@@ -77,7 +77,7 @@ namespace GridAnalyserLibrary
         {
             long maxColumnProduct = 0;
             long product = 0;
-            var columnLength = searchGrid.GetLength(0);
+            var columnLength = searchGrid.Length;
             for (int i = 0; i < columnLength - adjacentIntegers; i++)
             {
                 product = FindColumnProduct(columnIndex, i, adjacentIntegers);
@@ -101,7 +101,7 @@ namespace GridAnalyserLibrary
             long maxLRDiagonalsProduct = 0;
             long product = 0;
             // Get number of columns
-            var noOfColumns = searchGrid.GetLength(1);
+            var noOfColumns = searchGrid[0].Length;
             for (int i = 0; i < noOfColumns - adjacentIntegers; i++)
             {
                 product = AnalyseLRDiagonalSection(0,i); // Vary columns
@@ -115,7 +115,7 @@ namespace GridAnalyserLibrary
         {
             long maxLRDiagonalProduct = 0;
             long product = 0;
-            var columnLength = searchGrid.GetLength(0);
+            var columnLength = searchGrid.Length;
             for (int i = 0; i < columnLength - adjacentIntegers; i++)
             {
                 product = FindLRDiagonalProduct(rowIndex + i, columnIndex, adjacentIntegers);
@@ -141,7 +141,7 @@ namespace GridAnalyserLibrary
             long maxRLDiagonalsProduct = 0;
             long product = 0;
             // Get number of columns
-            var noOfColumns = searchGrid.GetLength(1);
+            var noOfColumns = searchGrid[0].Length;
             for (int i = noOfColumns -1; i >= (adjacentIntegers - 1) ; i--)
             {
                 product = AnalyseRLDiagonalSection(0, i); // Vary columns
@@ -154,7 +154,7 @@ namespace GridAnalyserLibrary
         {
             long maxRLDiagonalProduct = 0;
             long product = 0;
-            var columnLength = searchGrid.GetLength(0);
+            var columnLength = searchGrid.Length;
             for (int i = 0; i < columnLength - adjacentIntegers; i++)
             {
                 product = FindRLDiagonalProduct(rowIndex + i, columnIndex, adjacentIntegers);
