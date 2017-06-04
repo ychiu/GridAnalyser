@@ -9,6 +9,8 @@ namespace GridAnalyser
         /**
          * Calculate the different combinations of adjacent numbers in the same direction of a 10 x 10 Grid
          *
+         * Make an assumption based current requirements for 10 x 10 grid :
+         * Simplify CombinationAnalyser for use with square arrays only?
          **/
 
         public int adjacentIntegers { get; set; }
@@ -24,11 +26,6 @@ namespace GridAnalyser
             
         }
 
-        public int VerticalCombinations(int elementsInRow, int elementsInColumn)
-        {
-            throw new NotImplementedException();
-        }
-
         public int LRDiagonalCombinations(int elementsInRow, int elementsInColumn)
         {
             // Visual analysis -> Hypothesis : square of the difference length of square and adjacent cells - 1
@@ -37,9 +34,10 @@ namespace GridAnalyser
             
         }
 
-        public int RLDiagonalCombinations(int elementsInRow, int elementsInColumn)
+        public int NumberOfCombinationsInASquareArray(int elementsInRow)
         {
             throw new NotImplementedException();
         }
+
     }
 }

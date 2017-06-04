@@ -150,6 +150,19 @@ namespace GridAnalyserTests
         }
         #endregion
 
+        #region NumberOfCombinationsInASquareArray Tests
+
+        [TestMethod]
+        public void NumberOfCombinationsInASquareArray_3x3GridWith3AdjacentInts_Returns8()
+        {
+            CombinationAnalyser analyser = new CombinationAnalyser();
+            analyser.adjacentIntegers = 3;
+            int expected = 8;
+            int result = analyser.NumberOfCombinationsInASquareArray(3);
+            Assert.AreEqual(expected, result);
+        }
+
+        #endregion
 
     }
 }
