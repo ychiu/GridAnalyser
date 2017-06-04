@@ -20,15 +20,20 @@ namespace GridAnalyserLibrary
 
 
         // Analysis methods
-        private int AnalyseRows()
+        public long AnalyseRows()
         {
+            long maxRowProduct = 0;
+            long product = 0;
             // Get number of rows
-            var iRows = searchGrid.GetLength(0);
-            var iColumns = searchGrid.GetLength(1);
+            var noOfRows = searchGrid.GetLength(0);
+            //var iColumns = searchGrid.GetLength(1);
 
-            return 0;
-
-
+            for (int i = 0; i < noOfRows; i++)
+            {
+                product = AnalyseRow(i);
+                maxRowProduct = (maxRowProduct < product) ? product : maxRowProduct;
+            }
+            return maxRowProduct;
         }
         public long AnalyseRow(int rowIndex)
         {
