@@ -100,5 +100,31 @@ namespace GridAnalyserTests
         }
         #endregion
 
+        #region AnalyseColumn Tests
+        [TestMethod]
+        public void AnalyseColumn_FirstColumn_Returns206388()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 206388; // Verified - (49,81,52)
+            var result = analyser.AnalyseColumn(0);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void AnalyseColumn_LastColumn_Returns463275()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 463275; // Verified - (75,87,71)
+            var result = analyser.AnalyseColumn(9);
+            Assert.AreEqual(expected, result);
+        }
+        #endregion
+
     }
 }
