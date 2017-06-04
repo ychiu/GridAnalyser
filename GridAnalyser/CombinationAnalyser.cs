@@ -19,7 +19,8 @@ namespace GridAnalyser
 
         public int HorizontalCombinations(int elementsInRow, int elementsInColumn)
         {
-            return (elementsInRow - adjacentIntegers) + 1;
+
+            return ((elementsInRow - adjacentIntegers) + 1) * elementsInColumn;
             
         }
 
