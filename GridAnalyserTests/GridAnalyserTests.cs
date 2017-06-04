@@ -1,5 +1,6 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using GridAnalyserLibrary;
 
 namespace GridAnalyserTests
 {
@@ -21,9 +22,58 @@ namespace GridAnalyserTests
         };
 
 
+        //[TestMethod]
+        //public void AnalyseRow_FirstRow_ReturnsX()
+        //{
+        //    GridAnalyser analyser = new GridAnalyser();
+        //    analyser.searchGrid = QuExampleGrid;
+        //    analyser.AnalyseRow()
+        //}
         [TestMethod]
-        public void TestMethod1()
+        public void findProduct_FirstRowFirstSection_Returns55290()
         {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var product = analyser.findProduct(0, 0, 3);
+            var expected = 8 * 2 * 22;
+            Assert.AreEqual(expected, product);
+        }
+
+        [TestMethod]
+        public void findProduct_FirstRowSecondSection_Returns352()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var product = analyser.findProduct(0, 3, 3);
+            var expected = 97 * 38 * 15;
+            Assert.AreEqual(expected, product);
+        }
+
+        [TestMethod]
+        public void AnalyseRow_FirstRow_Returns81092()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 81092; // (22,97,38)
+            var result = analyser.AnalyseRow(0);
+            Assert.AreEqual(expected, result);
+        }
+        [TestMethod]
+        public void AnalyseRow_LastRow_Returns66880()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 66880; // (76,44,20)
+            var result = analyser.AnalyseRow(9);
+            Assert.AreEqual(expected, result);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GridAnalyser
+namespace GridAnalyserLibrary
 {
     public class CombinationAnalyser
     {
