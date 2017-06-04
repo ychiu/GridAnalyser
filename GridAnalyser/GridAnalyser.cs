@@ -96,10 +96,36 @@ namespace GridAnalyserLibrary
             long product = 1;
             for (int i = 0; i < adjacentInts; i++)
             {
-                product = product * searchGrid[rowIndex + i, columnIndex+ i];
+                product = product * searchGrid[rowIndex + i, columnIndex + i];
             }
             return product;
         }
+
+        public long AnalyseRLDiagonalSection(int rowIndex, int columnIndex)
+        {
+            long maxRLDiagonalProduct = 0;
+            long product = 0;
+            var columnLength = searchGrid.GetLength(0);
+            for (int i = 0; i < columnLength - adjacentIntegers; i++)
+            {
+                product = FindRLDiagonalProduct(rowIndex + i, columnIndex, adjacentIntegers);
+                maxRLDiagonalProduct = (maxRLDiagonalProduct < product) ? product : maxRLDiagonalProduct;
+            }
+            return maxRLDiagonalProduct;
+        }
+
+
+        public long FindRLDiagonalProduct(int rowIndex, int columnIndex, int adjacentInts)
+        {
+            // HINT - var row = QuExampleGrid[0,9]; // 75 (1st row, 10th element
+            long product = 1;
+            for (int i = 0; i < adjacentInts; i++)
+            {
+                product = product * searchGrid[rowIndex + i, columnIndex - i];
+            }
+            return product;
+        }
+
 
         private int AnalyseColumns()
         {
