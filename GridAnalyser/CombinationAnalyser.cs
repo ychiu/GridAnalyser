@@ -17,22 +17,6 @@ namespace GridAnalyser
                 
         }
 
-
-        /**
-         * Scenarios : 
-         * I (adjacent ints) = 3
-         * M (No of columns) = 3
-         * N (No of rows) = 1
-         * 
-         * I:3; M:3; N:1 ==> X = 1
-         * I:3; M:4; N:1 ==> X = 2
-         * I:3; M:5; N:1 ==> X = 3
-         * I:3; M:5; N:1 ==> X = 4
-         * 
-         * Hypothesis : combinations follow formula
-         * X = (M-I) + 1
-         */
-
         public int HorizontalCombinations(int elementsInRow, int elementsInColumn)
         {
             return (elementsInRow - adjacentIntegers) + 1;
