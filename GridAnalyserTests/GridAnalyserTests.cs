@@ -30,7 +30,7 @@ namespace GridAnalyserTests
             analyser.searchGrid = QuExampleGrid;
             analyser.adjacentIntegers = 3;
 
-            var product = analyser.findRowProduct(0, 0, 3);
+            var product = analyser.FindRowProduct(0, 0, 3);
             var expected = 8 * 2 * 22;
             Assert.AreEqual(expected, product);
         }
@@ -42,7 +42,7 @@ namespace GridAnalyserTests
             analyser.searchGrid = QuExampleGrid;
             analyser.adjacentIntegers = 3;
 
-            var product = analyser.findRowProduct(0, 3, 3);
+            var product = analyser.FindRowProduct(0, 3, 3);
             var expected = 97 * 38 * 15;
             Assert.AreEqual(expected, product);
         }
@@ -82,7 +82,7 @@ namespace GridAnalyserTests
             analyser.searchGrid = QuExampleGrid;
             analyser.adjacentIntegers = 3;
 
-            var product = analyser.findColumnProduct(0, 0, 3);
+            var product = analyser.FindColumnProduct(0, 0, 3);
             var expected = 8 * 49 * 81;
             Assert.AreEqual(expected, product);
         }
@@ -94,7 +94,7 @@ namespace GridAnalyserTests
             analyser.searchGrid = QuExampleGrid;
             analyser.adjacentIntegers = 3;
 
-            var product = analyser.findColumnProduct(0, 3, 3);
+            var product = analyser.FindColumnProduct(0, 3, 3);
             var expected = 52 * 22 * 24;
             Assert.AreEqual(expected, product);
         }

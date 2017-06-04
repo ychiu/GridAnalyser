@@ -37,13 +37,13 @@ namespace GridAnalyserLibrary
             var rowLength = searchGrid.GetLength(1);
             for (int i = 0; i < rowLength - adjacentIntegers; i++)
             {
-                product = findRowProduct(rowIndex, i, adjacentIntegers);
+                product = FindRowProduct(rowIndex, i, adjacentIntegers);
                 maxRowProduct = (maxRowProduct < product) ? product : maxRowProduct;
             }
             return maxRowProduct;
         }
         
-        public long findRowProduct(int rowIndex, int startIndex,int adjacentInts)
+        public long FindRowProduct(int rowIndex, int startIndex,int adjacentInts)
         {
             long product = 1;
             for(int i = startIndex; i < startIndex + adjacentInts; i++)
@@ -60,13 +60,13 @@ namespace GridAnalyserLibrary
             var columnLength = searchGrid.GetLength(0);
             for (int i = 0; i < columnLength - adjacentIntegers; i++)
             {
-                product = findColumnProduct(columnIndex, i, adjacentIntegers);
+                product = FindColumnProduct(columnIndex, i, adjacentIntegers);
                 maxColumnProduct = (maxColumnProduct < product) ? product : maxColumnProduct;
             }
             return maxColumnProduct;
         }
 
-        public long findColumnProduct(int columnIndex, int startIndex, int adjacentInts)
+        public long FindColumnProduct(int columnIndex, int startIndex, int adjacentInts)
         {
             long product = 1;
             for (int i = startIndex; i < startIndex + adjacentInts; i++)
