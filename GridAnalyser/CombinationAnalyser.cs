@@ -36,7 +36,8 @@ namespace GridAnalyser
 
         public int NumberOfCombinationsInASquareArray(int elementsInRow)
         {
-            throw new NotImplementedException();
+            var result = HorizontalCombinations(elementsInRow, elementsInRow) + LRDiagonalCombinations(elementsInRow, elementsInRow);
+            return 2 * result;
         }
 
     }
