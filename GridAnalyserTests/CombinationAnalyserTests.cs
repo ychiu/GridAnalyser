@@ -63,6 +63,36 @@ namespace GridAnalyserTests
             Assert.AreEqual(expected, result);
         }
 
+        // Test methods for grids greater than 1 row
+        [TestMethod]
+        public void HorizontalCombinations_6x2GridWith3AdjacentInts_Returns8()
+        {
+            CombinationAnalyser analyser = new CombinationAnalyser();
+            analyser.adjacentIntegers = 3;
+            int expected = 8;
+            int result = analyser.HorizontalCombinations(6, 2);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void HorizontalCombinations_5x2GridWith3AdjacentInts_Returns6()
+        {
+            CombinationAnalyser analyser = new CombinationAnalyser();
+            analyser.adjacentIntegers = 3;
+            int expected = 6;
+            int result = analyser.HorizontalCombinations(5, 2);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void HorizontalCombinations_4x2GridWith3AdjacentInts_Returns4()
+        {
+            CombinationAnalyser analyser = new CombinationAnalyser();
+            analyser.adjacentIntegers = 3;
+            int expected = 4;
+            int result = analyser.HorizontalCombinations(4, 2);
+            Assert.AreEqual(expected, result);
+        }
 
     }
 }
