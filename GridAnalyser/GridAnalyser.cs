@@ -185,7 +185,16 @@ namespace GridAnalyserLibrary
             // Clear state
             this.adjacentIntegers = adjacentIntegers;
             this.searchGrid = searchGrid;
-            return 0;
+            // Execute search
+            var maxRowProduct = AnalyseRows();
+            var maxColumnProduct = AnalyseColumns();
+            var maxLRDiagonalProduct = AnalyseLRDiagonals();
+            var maxRLDiagonalProduct = AnalyseRLDiagonals();
+            // Process Results
+            var maxProduct = (maxRowProduct > maxColumnProduct) ? maxRowProduct : maxColumnProduct;
+            maxProduct = (maxProduct > maxLRDiagonalProduct) ? maxProduct : maxLRDiagonalProduct;
+            maxProduct = (maxProduct > maxRLDiagonalProduct) ? maxProduct : maxRLDiagonalProduct;
+            return maxProduct;
         }
 
     }

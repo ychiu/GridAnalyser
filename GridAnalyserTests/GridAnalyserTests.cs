@@ -24,7 +24,7 @@ namespace GridAnalyserTests
         #region FindRowProduct Test
 
         [TestMethod]
-        public void findRowProduct_FirstRowFirstSection_Returns55290()
+        public void FindRowProduct_FirstRowFirstSection_Returns55290()
         {
             GridAnalyser analyser = new GridAnalyser();
             analyser.searchGrid = QuExampleGrid;
@@ -36,7 +36,7 @@ namespace GridAnalyserTests
         }
 
         [TestMethod]
-        public void findRowProduct_FirstRowSecondSection_Returns352()
+        public void FindRowProduct_FirstRowSecondSection_Returns352()
         {
             GridAnalyser analyser = new GridAnalyser();
             analyser.searchGrid = QuExampleGrid;
@@ -93,7 +93,7 @@ namespace GridAnalyserTests
 
         #region FindColumnProduct Tests
         [TestMethod]
-        public void findColumnProduct_FirstColumnFirstSection_Returns31752()
+        public void FindColumnProduct_FirstColumnFirstSection_Returns31752()
         {
             GridAnalyser analyser = new GridAnalyser();
             analyser.searchGrid = QuExampleGrid;
@@ -105,7 +105,7 @@ namespace GridAnalyserTests
         }
 
         [TestMethod]
-        public void findColumnProduct_FirstColunSecondSection_Returns27456()
+        public void FindColumnProduct_FirstColunSecondSection_Returns27456()
         {
             GridAnalyser analyser = new GridAnalyser();
             analyser.searchGrid = QuExampleGrid;
@@ -255,6 +255,19 @@ namespace GridAnalyserTests
 
             var expected = 470547; // Unverified            
             var result = analyser.AnalyseRLDiagonals();
+            Assert.AreEqual(expected, result);
+        }
+        #endregion
+
+        #region largestProductOfNAdjacentIntegers test
+
+        [TestMethod]
+        public void largestProductOfNAdjacentIntegers_ReturnsX()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            var result = analyser.largestProductOfNAdjacentIntegers(QuExampleGrid, 3);
+
+            var expected = 667755; // Unverified            
             Assert.AreEqual(expected, result);
         }
         #endregion
