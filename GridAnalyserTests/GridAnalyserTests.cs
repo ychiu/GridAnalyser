@@ -21,7 +21,7 @@ namespace GridAnalyserTests
             {21,36,23,9,75,0,76,44,20,45}
         };
 
-        #region findRowProduct Test
+        #region FindRowProduct Test
 
         [TestMethod]
         public void findRowProduct_FirstRowFirstSection_Returns55290()
@@ -91,7 +91,7 @@ namespace GridAnalyserTests
 
         #endregion
 
-        #region findColumnProduct
+        #region FindColumnProduct Tests
         [TestMethod]
         public void findColumnProduct_FirstColumnFirstSection_Returns31752()
         {
@@ -139,6 +139,21 @@ namespace GridAnalyserTests
 
             var expected = 463275; // Verified - (75,87,71)
             var result = analyser.AnalyseColumn(9);
+            Assert.AreEqual(expected, result);
+        }
+        #endregion
+
+        #region AnalyseColumns Test
+
+        [TestMethod]
+        public void AnalyseColumns_FullQuExampleGrid_ReturnsX()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 463275; // Unverified
+            var result = analyser.AnalyseColumns();
             Assert.AreEqual(expected, result);
         }
         #endregion

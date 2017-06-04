@@ -26,7 +26,6 @@ namespace GridAnalyserLibrary
             long product = 0;
             // Get number of rows
             var noOfRows = searchGrid.GetLength(0);
-            //var iColumns = searchGrid.GetLength(1);
 
             for (int i = 0; i < noOfRows; i++)
             {
@@ -57,6 +56,22 @@ namespace GridAnalyserLibrary
             }
             return product;
         }
+
+        public long AnalyseColumns()
+        {
+            long maxColumnProduct = 0;
+            long product = 0;
+            // Get number of columns
+            var noOfColumns = searchGrid.GetLength(1);
+
+            for (int i = 0; i < noOfColumns; i++)
+            {
+                product = AnalyseColumn(i);
+                maxColumnProduct = (maxColumnProduct < product) ? product : maxColumnProduct;
+            }
+            return maxColumnProduct;
+        }
+
 
         public long AnalyseColumn(int columnIndex)
         {
@@ -131,11 +146,6 @@ namespace GridAnalyserLibrary
             return product;
         }
 
-
-        private int AnalyseColumns()
-        {
-            throw new NotImplementedException();
-        }
 
         private int AnalysisLRDiagonals()
         {
