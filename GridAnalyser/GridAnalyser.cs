@@ -37,18 +37,41 @@ namespace GridAnalyserLibrary
             var rowLength = searchGrid.GetLength(1);
             for (int i = 0; i < rowLength - adjacentIntegers; i++)
             {
-                product = findProduct(rowIndex, i, adjacentIntegers);
+                product = findRowProduct(rowIndex, i, adjacentIntegers);
                 maxRowProduct = (maxRowProduct < product) ? product : maxRowProduct;
             }
             return maxRowProduct;
         }
         
-        public long findProduct(int rowIndex, int startIndex,int adjacentInts)
+        public long findRowProduct(int rowIndex, int startIndex,int adjacentInts)
         {
             long product = 1;
             for(int i = startIndex; i < startIndex + adjacentInts; i++)
             {
                 product = product * searchGrid[rowIndex,i];
+            }
+            return product;
+        }
+
+        public long AnalyseColumn(int columnIndex)
+        {
+            long maxColumnProduct = 0;
+            long product = 0;
+            var columnLength = searchGrid.GetLength(0);
+            for (int i = 0; i < columnLength - adjacentIntegers; i++)
+            {
+                product = findColumnProduct(columnIndex, i, adjacentIntegers);
+                maxColumnProduct = (maxColumnProduct < product) ? product : maxColumnProduct;
+            }
+            return maxColumnProduct;
+        }
+
+        public long findColumnProduct(int columnIndex, int startIndex, int adjacentInts)
+        {
+            long product = 1;
+            for (int i = startIndex; i < startIndex + adjacentInts; i++)
+            {
+                product = product * searchGrid[i, columnIndex];
             }
             return product;
         }

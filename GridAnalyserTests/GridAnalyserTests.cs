@@ -21,37 +21,34 @@ namespace GridAnalyserTests
             {21,36,23,9,75,0,76,44,20,45}
         };
 
+        #region findRowProduct Test
 
-        //[TestMethod]
-        //public void AnalyseRow_FirstRow_ReturnsX()
-        //{
-        //    GridAnalyser analyser = new GridAnalyser();
-        //    analyser.searchGrid = QuExampleGrid;
-        //    analyser.AnalyseRow()
-        //}
         [TestMethod]
-        public void findProduct_FirstRowFirstSection_Returns55290()
+        public void findRowProduct_FirstRowFirstSection_Returns55290()
         {
             GridAnalyser analyser = new GridAnalyser();
             analyser.searchGrid = QuExampleGrid;
             analyser.adjacentIntegers = 3;
 
-            var product = analyser.findProduct(0, 0, 3);
+            var product = analyser.findRowProduct(0, 0, 3);
             var expected = 8 * 2 * 22;
             Assert.AreEqual(expected, product);
         }
 
         [TestMethod]
-        public void findProduct_FirstRowSecondSection_Returns352()
+        public void findRowProduct_FirstRowSecondSection_Returns352()
         {
             GridAnalyser analyser = new GridAnalyser();
             analyser.searchGrid = QuExampleGrid;
             analyser.adjacentIntegers = 3;
 
-            var product = analyser.findProduct(0, 3, 3);
+            var product = analyser.findRowProduct(0, 3, 3);
             var expected = 97 * 38 * 15;
             Assert.AreEqual(expected, product);
         }
+        #endregion
+
+        #region AnalyseRow Tests
 
         [TestMethod]
         public void AnalyseRow_FirstRow_Returns81092()
@@ -75,5 +72,33 @@ namespace GridAnalyserTests
             var result = analyser.AnalyseRow(9);
             Assert.AreEqual(expected, result);
         }
+        #endregion
+
+        #region findColumnProduct
+        [TestMethod]
+        public void findColumnProduct_FirstColumnFirstSection_Returns31752()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var product = analyser.findColumnProduct(0, 0, 3);
+            var expected = 8 * 49 * 81;
+            Assert.AreEqual(expected, product);
+        }
+
+        [TestMethod]
+        public void findColumnProduct_FirstColunSecondSection_Returns27456()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var product = analyser.findColumnProduct(0, 3, 3);
+            var expected = 52 * 22 * 24;
+            Assert.AreEqual(expected, product);
+        }
+        #endregion
+
     }
 }
