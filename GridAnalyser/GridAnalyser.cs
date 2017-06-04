@@ -77,6 +77,16 @@ namespace GridAnalyserLibrary
         }
 
 
+        public long FindLRDiagonalProduct(int rowIndex, int columnIndex, int adjacentInts)
+        {
+            // HINT - var row = QuExampleGrid[0,9]; // 75 (1st row, 10th element
+            long product = 1;
+            for (int i = 0; i < adjacentInts; i++)
+            {
+                product = product * searchGrid[rowIndex + i, columnIndex+ i];
+            }
+            return product;
+        }
 
         private int AnalyseColumns()
         {

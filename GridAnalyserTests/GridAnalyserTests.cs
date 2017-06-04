@@ -126,5 +126,31 @@ namespace GridAnalyserTests
         }
         #endregion
 
+        #region FindLRDiagonalProduct_TopLeftSection_Returns 
+        [TestMethod]
+        public void FindLRDiagonalProduct_TopLeftSection_Returns12152()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 8*49*31; 
+            var result = analyser.FindLRDiagonalProduct(0, 0, 3);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void FindLRDiagonalProduct_BottomLeftSection_Returns84755()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 67 * 55 * 23;
+            var result = analyser.FindLRDiagonalProduct(7, 0, 3);
+            Assert.AreEqual(expected, result);
+        }
+        #endregion
+
     }
 }
