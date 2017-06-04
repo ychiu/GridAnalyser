@@ -7,6 +7,8 @@ namespace GridAnalyserTests
     [TestClass]
     public class CombinationAnalyserTests
     {
+        #region HorizontalCombinations Tests
+
         /**
          * Scenarios : 
          * I (adjacent ints) = 3
@@ -93,6 +95,31 @@ namespace GridAnalyserTests
             int result = analyser.HorizontalCombinations(4, 2);
             Assert.AreEqual(expected, result);
         }
+        #endregion
+
+
+        #region LRDiagonalCombinations Tests
+
+        /**
+         * Diagonal Tests
+         * Scenarios 
+         * 3 x 3 grid (Adjacent Integers = 3)
+         * Left to Right (LR) yields = 1 combination
+         * Right to Left (RL) yeilds = 1 combination
+         * Total = 2
+         */
+
+        [TestMethod]
+        public void LRDiagonalCombinations_3x3GridWith3AdjacentInts_Returns1()
+        {
+            CombinationAnalyser analyser = new CombinationAnalyser();
+            analyser.adjacentIntegers = 3;
+            int expected = 1;
+            int result = analyser.LRDiagonalCombinations(3, 3);
+            Assert.AreEqual(expected, result);
+        }
+        #endregion
+
 
     }
 }
