@@ -152,5 +152,19 @@ namespace GridAnalyserTests
         }
         #endregion
 
+        #region AnalyseLRDiagonalSection Tests
+        [TestMethod]
+        public void AnalyseLRDiagonalSection_FirstColumn_Returns228095()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 228095; // Verified - (49,49,95)
+            var result = analyser.AnalyseLRDiagonalSection(0, 0);
+            Assert.AreEqual(expected, result);
+        }
+
+        #endregion
     }
 }

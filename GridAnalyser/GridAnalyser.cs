@@ -76,6 +76,19 @@ namespace GridAnalyserLibrary
             return product;
         }
 
+        public long AnalyseLRDiagonalSection(int rowIndex, int columnIndex)
+        {
+            long maxLRDiagonalProduct = 0;
+            long product = 0;
+            var columnLength = searchGrid.GetLength(0);
+            for (int i = 0; i < columnLength - adjacentIntegers; i++)
+            {
+                product = FindLRDiagonalProduct(rowIndex + i, columnIndex, adjacentIntegers);
+                maxLRDiagonalProduct = (maxLRDiagonalProduct < product) ? product : maxLRDiagonalProduct;
+            }
+            return maxLRDiagonalProduct;
+        }
+
 
         public long FindLRDiagonalProduct(int rowIndex, int columnIndex, int adjacentInts)
         {
