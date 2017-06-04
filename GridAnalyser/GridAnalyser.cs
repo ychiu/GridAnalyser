@@ -10,7 +10,7 @@ namespace GridAnalyserLibrary
         }
         public int adjacentIntegers { get; set; }
 
-        public int[,] searchGrid { get; set; }
+        public int[][] searchGrid { get; set; }
 
         private int maxRowProduct = 0;
 
@@ -52,7 +52,7 @@ namespace GridAnalyserLibrary
             long product = 1;
             for(int i = startIndex; i < startIndex + adjacentInts; i++)
             {
-                product = product * searchGrid[rowIndex,i];
+                product = product * searchGrid[rowIndex][i];
             }
             return product;
         }
@@ -91,7 +91,7 @@ namespace GridAnalyserLibrary
             long product = 1;
             for (int i = startIndex; i < startIndex + adjacentInts; i++)
             {
-                product = product * searchGrid[i, columnIndex];
+                product = product * searchGrid[i][columnIndex];
             }
             return product;
         }
@@ -131,7 +131,7 @@ namespace GridAnalyserLibrary
             long product = 1;
             for (int i = 0; i < adjacentInts; i++)
             {
-                product = product * searchGrid[rowIndex + i, columnIndex + i];
+                product = product * searchGrid[rowIndex + i][columnIndex + i];
             }
             return product;
         }
@@ -170,20 +170,22 @@ namespace GridAnalyserLibrary
             long product = 1;
             for (int i = 0; i < adjacentInts; i++)
             {
-                product = product * searchGrid[rowIndex + i, columnIndex - i];
+                product = product * searchGrid[rowIndex + i][columnIndex - i];
             }
             return product;
         }
 
-
-        private int AnalysisRLDiagonals()
+        public long CalculateProduct(int [] integers)
         {
             throw new NotImplementedException();
         }
 
-        private int CalculateProduct(int [] integers)
+        public long largestProductOfNAdjacentIntegers(int[][] searchGrid, int adjacentIntegers)
         {
-            throw new NotImplementedException();
+            // Clear state
+            this.adjacentIntegers = adjacentIntegers;
+            this.searchGrid = searchGrid;
+            return 0;
         }
 
     }
