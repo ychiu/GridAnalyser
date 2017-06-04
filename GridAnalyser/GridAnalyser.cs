@@ -96,6 +96,21 @@ namespace GridAnalyserLibrary
             return product;
         }
 
+        public long AnalyseLRDiagonals()
+        {
+            long maxLRDiagonalsProduct = 0;
+            long product = 0;
+            // Get number of columns
+            var noOfColumns = searchGrid.GetLength(1);
+            for (int i = 0; i < noOfColumns - adjacentIntegers; i++)
+            {
+                product = AnalyseLRDiagonalSection(0,i); // Vary columns
+                maxLRDiagonalsProduct = (maxLRDiagonalsProduct < product) ? product : maxLRDiagonalsProduct;
+            }
+            return maxLRDiagonalsProduct;
+
+        }
+
         public long AnalyseLRDiagonalSection(int rowIndex, int columnIndex)
         {
             long maxLRDiagonalProduct = 0;
@@ -119,6 +134,20 @@ namespace GridAnalyserLibrary
                 product = product * searchGrid[rowIndex + i, columnIndex + i];
             }
             return product;
+        }
+
+        public long AnalyseRLDiagonals()
+        {
+            long maxRLDiagonalsProduct = 0;
+            long product = 0;
+            // Get number of columns
+            var noOfColumns = searchGrid.GetLength(1);
+            for (int i = noOfColumns -1; i >= (adjacentIntegers - 1) ; i--)
+            {
+                product = AnalyseRLDiagonalSection(0, i); // Vary columns
+                maxRLDiagonalsProduct = (maxRLDiagonalsProduct < product) ? product : maxRLDiagonalsProduct;
+            }
+            return maxRLDiagonalsProduct;
         }
 
         public long AnalyseRLDiagonalSection(int rowIndex, int columnIndex)
@@ -146,11 +175,6 @@ namespace GridAnalyserLibrary
             return product;
         }
 
-
-        private int AnalysisLRDiagonals()
-        {
-            throw new NotImplementedException();
-        }
 
         private int AnalysisRLDiagonals()
         {

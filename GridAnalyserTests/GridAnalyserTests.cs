@@ -199,6 +199,22 @@ namespace GridAnalyserTests
 
         #endregion
 
+        #region AnalyseLRDiagonals Test
+
+        [TestMethod]
+        public void AnalyseLRDiagonals_FullQuExampleGrid_ReturnsX()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 667755; // Unverified            
+            var result = analyser.AnalyseLRDiagonals();
+            Assert.AreEqual(expected, result);
+        }
+        #endregion
+
+
         #region FindRLDiagonalProduct Tests
         [TestMethod]
         public void FindRLDiagonalProduct_TopRightSection_Returns130500()
@@ -227,5 +243,21 @@ namespace GridAnalyserTests
         }
 
         #endregion
+
+        #region AnalyseRLDiagonals Test
+
+        [TestMethod]
+        public void AnalyseRLDiagonals_FullQuExampleGrid_ReturnsX()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            analyser.searchGrid = QuExampleGrid;
+            analyser.adjacentIntegers = 3;
+
+            var expected = 470547; // Unverified            
+            var result = analyser.AnalyseRLDiagonals();
+            Assert.AreEqual(expected, result);
+        }
+        #endregion
+
     }
 }
