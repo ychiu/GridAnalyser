@@ -130,12 +130,22 @@ namespace GridAnalyserTests
         }
 
         [TestMethod]
-        public void LRDiagonalCombinations_5x5GridWith3AdjacentInts_Returns8()
+        public void LRDiagonalCombinations_5x5GridWith3AdjacentInts_Returns9()
         {
             CombinationAnalyser analyser = new CombinationAnalyser();
             analyser.adjacentIntegers = 3;
-            int expected = 8;
+            int expected = 9;
             int result = analyser.LRDiagonalCombinations(5, 5);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void LRDiagonalCombinations_6x6GridWith3AdjacentInts_Returns16()
+        {
+            CombinationAnalyser analyser = new CombinationAnalyser();
+            analyser.adjacentIntegers = 3;
+            int expected = 16;
+            int result = analyser.LRDiagonalCombinations(6, 6);
             Assert.AreEqual(expected, result);
         }
         #endregion
