@@ -163,11 +163,11 @@ namespace GridAnalyserTests
         }
 
         [TestMethod]
-        public void NumberOfCombinationsInASquareArray_4x4GridWith3AdjacentInts_Returns22()
+        public void NumberOfCombinationsInASquareArray_4x4GridWith3AdjacentInts_Returns24()
         {
             CombinationAnalyser analyser = new CombinationAnalyser();
             analyser.adjacentIntegers = 3;
-            int expected = 22;
+            int expected = 24;
             int result = analyser.NumberOfCombinationsInASquareArray(4);
             Assert.AreEqual(expected, result);
         }
