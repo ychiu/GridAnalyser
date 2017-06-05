@@ -181,9 +181,7 @@ namespace GridAnalyserLibrary
             var maxLRDiagonalProduct = AnalyseLRDiagonals();
             var maxRLDiagonalProduct = AnalyseRLDiagonals();
             // Process Results
-            var maxProduct = (maxRowProduct > maxColumnProduct) ? maxRowProduct : maxColumnProduct;
-            maxProduct = (maxProduct > maxLRDiagonalProduct) ? maxProduct : maxLRDiagonalProduct;
-            maxProduct = (maxProduct > maxRLDiagonalProduct) ? maxProduct : maxRLDiagonalProduct;
+            var maxProduct = findMaximumValue(maxRowProduct, maxColumnProduct, maxLRDiagonalProduct, maxRLDiagonalProduct);
             return maxProduct;
         }
 
@@ -211,11 +209,19 @@ namespace GridAnalyserLibrary
 
         private async Task<long> AnalyseAllAsync()
         {
-            var rows = await AnalyseRowsAsync();
-            var cols = await AnalyseColumnsAsync();
-            var lr = await AnalyseLRDiagonalsAsync();
-            var rl = await AnalyseRLDiagonalsAsync();
-            // Process Results
+            Task<long>[] tasks = new Task<long>[4];
+            tasks[0] = Task.Run(()=> AnalyseRowsAsync());
+            tasks[1] = Task.Run(() => AnalyseColumnsAsync());
+            tasks[2] = Task.Run(() => AnalyseLRDiagonalsAsync());
+            tasks[3] = Task.Run(() => AnalyseRLDiagonalsAsync());
+            var result = Task.WhenAll(tasks);
+            var maxProduct = findMaximumValue(result.Result[0], result.Result[1], result.Result[2], result.Result[3]);
+            return maxProduct;
+        }
+
+
+        private long findMaximumValue(long rows, long cols, long lr, long rl)
+        {
             var maxProduct = (rows > cols) ? rows : cols;
             maxProduct = (maxProduct > lr) ? maxProduct : lr;
             maxProduct = (maxProduct > rl) ? maxProduct : rl;
