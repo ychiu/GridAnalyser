@@ -209,17 +209,6 @@ namespace GridAnalyserLibrary
             return AnalyseRLDiagonals();
         }
 
-        private async Task AnalyseAsync()
-        {
-            Task[] tasks = new Task[4];
-            tasks[0] = AnalyseRowsAsync();
-            tasks[1] = AnalyseColumnsAsync();
-            tasks[2] = AnalyseLRDiagonalsAsync();
-            tasks[3] = AnalyseRLDiagonalsAsync();
-
-            await Task.WhenAll(tasks);
-        }
-
         private async Task<long> AnalyseAllAsync()
         {
             var rows = await AnalyseRowsAsync();
