@@ -25,7 +25,9 @@ namespace GridAnalyserLibrary
             return ((elementsInRow - adjacentIntegers) + 1) * elementsInColumn;
             
         }
-
+        /**
+         * LR - Left to Right Diagonal of adajacent cells/ints
+         * */
         public int LRDiagonalCombinations(int elementsInRow, int elementsInColumn)
         {
             // Visual analysis -> Hypothesis : square of the difference length of square and adjacent cells - 1

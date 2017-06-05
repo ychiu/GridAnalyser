@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace GridAnalyserLibrary
 {
@@ -12,14 +13,8 @@ namespace GridAnalyserLibrary
 
         public int[][] searchGrid { get; set; }
 
-        private int maxRowProduct = 0;
-
-        private int maxColumnProduct = 0;
-
-        private int maxDiagonalProduct = 0;
-
-
         // Analysis methods
+
         public long AnalyseRows()
         {
             long maxRowProduct = 0;
@@ -175,11 +170,6 @@ namespace GridAnalyserLibrary
             return product;
         }
 
-        public long CalculateProduct(int [] integers)
-        {
-            throw new NotImplementedException();
-        }
-
         public long largestProductOfNAdjacentIntegers(int[][] searchGrid, int adjacentIntegers)
         {
             // Clear state
@@ -196,6 +186,64 @@ namespace GridAnalyserLibrary
             maxProduct = (maxProduct > maxRLDiagonalProduct) ? maxProduct : maxRLDiagonalProduct;
             return maxProduct;
         }
+
+        #region Parallelism Functional Extensions
+
+        private async Task<long> AnalyseRowsAsync()
+        {
+            return AnalyseRows();
+        }
+
+        private async Task<long> AnalyseColumnsAsync()
+        {
+            return AnalyseColumns();
+        }
+
+        private async Task<long> AnalyseLRDiagonalsAsync()
+        {
+            return AnalyseLRDiagonals();
+        }
+
+        private async Task<long> AnalyseRLDiagonalsAsync()
+        {
+            return AnalyseRLDiagonals();
+        }
+
+        private async Task AnalyseAsync()
+        {
+            Task[] tasks = new Task[4];
+            tasks[0] = AnalyseRowsAsync();
+            tasks[1] = AnalyseColumnsAsync();
+            tasks[2] = AnalyseLRDiagonalsAsync();
+            tasks[3] = AnalyseRLDiagonalsAsync();
+
+            await Task.WhenAll(tasks);
+        }
+
+        private async Task<long> AnalyseAllAsync()
+        {
+            var rows = await AnalyseRowsAsync();
+            var cols = await AnalyseColumnsAsync();
+            var lr = await AnalyseLRDiagonalsAsync();
+            var rl = await AnalyseRLDiagonalsAsync();
+            // Process Results
+            var maxProduct = (rows > cols) ? rows : cols;
+            maxProduct = (maxProduct > lr) ? maxProduct : lr;
+            maxProduct = (maxProduct > rl) ? maxProduct : rl;
+            return maxProduct;
+        }
+
+        public long largestProductOfNAdjacentIntegersAsync(int[][] searchGrid, int adjacentIntegers)
+        {
+            // Clear state
+            this.adjacentIntegers = adjacentIntegers;
+            this.searchGrid = searchGrid;
+            // Execute search
+            var result = AnalyseAllAsync();
+
+            return result.Result;
+        }
+        #endregion
 
     }
 }

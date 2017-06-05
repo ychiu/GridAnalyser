@@ -270,6 +270,21 @@ namespace GridAnalyserTests
             var expected = 667755; // Unverified            
             Assert.AreEqual(expected, result);
         }
+
+        /**
+         * Async method takes longer to run in unit test than not TPL 1ms vs 11ms.
+         * This is probably due to the overhead of using the ASYNC/AWAIT
+         */
+        [TestMethod]
+        public void largestProductOfNAdjacentIntegersAsync_ReturnsX()
+        {
+            GridAnalyser analyser = new GridAnalyser();
+            var result = analyser.largestProductOfNAdjacentIntegersAsync(QuExampleGrid, 3);
+
+            var expected = 667755; // Unverified            
+            Assert.AreEqual(expected, result);
+        }
+
         #endregion
 
     }
