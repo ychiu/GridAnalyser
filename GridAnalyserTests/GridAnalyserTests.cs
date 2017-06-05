@@ -262,10 +262,10 @@ namespace GridAnalyserTests
         #region largestProductOfNAdjacentIntegers test
 
         [TestMethod]
-        public void largestProductOfNAdjacentIntegers_ReturnsX()
+        public void largestProductOfNAdjacentIntegersNonAsyn_ReturnsX()
         {
             GridAnalyser analyser = new GridAnalyser();
-            var result = analyser.largestProductOfNAdjacentIntegers(QuExampleGrid, 3);
+            var result = analyser.largestProductOfNAdjacentIntegersNonAsync(QuExampleGrid, 3);
 
             var expected = 667755; // Unverified            
             Assert.AreEqual(expected, result);
@@ -276,10 +276,10 @@ namespace GridAnalyserTests
          * This is probably due to the overhead of using the ASYNC/AWAIT
          */
         [TestMethod]
-        public void largestProductOfNAdjacentIntegersAsync_ReturnsX()
+        public void largestProductOfNAdjacentIntegers_ReturnsX()
         {
             GridAnalyser analyser = new GridAnalyser();
-            var result = analyser.largestProductOfNAdjacentIntegersAsync(QuExampleGrid, 3);
+            var result = analyser.largestProductOfNAdjacentIntegers(QuExampleGrid, 3);
 
             var expected = 667755; // Unverified            
             Assert.AreEqual(expected, result);

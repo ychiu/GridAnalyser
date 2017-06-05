@@ -170,7 +170,7 @@ namespace GridAnalyserLibrary
             return product;
         }
 
-        public long largestProductOfNAdjacentIntegers(int[][] searchGrid, int adjacentIntegers)
+        public long largestProductOfNAdjacentIntegersNonAsync(int[][] searchGrid, int adjacentIntegers)
         {
             // Clear state
             this.adjacentIntegers = adjacentIntegers;
@@ -222,12 +222,12 @@ namespace GridAnalyserLibrary
             return maxProduct;
         }
 
-        public long largestProductOfNAdjacentIntegersAsync(int[][] searchGrid, int adjacentIntegers)
+        public long largestProductOfNAdjacentIntegers(int[][] searchGrid, int adjacentIntegers)
         {
             // Clear state
             this.adjacentIntegers = adjacentIntegers;
             this.searchGrid = searchGrid;
-            // Execute search
+            // Execute async search
             var result = AnalyseAllAsync();
 
             return result.Result;
